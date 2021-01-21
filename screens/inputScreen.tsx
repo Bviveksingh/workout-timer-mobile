@@ -1,12 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {useState, FC} from 'react';
-import { TextInput, View, Button, NativeSyntheticEvent, TextInputChangeEventData, Text } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import {RootStackParamList} from '../App';
+import { StatusBar } from "expo-status-bar";
+import React, {useState, FC} from "react";
+import { TextInput, View, Button, NativeSyntheticEvent, TextInputChangeEventData, Text } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import {RootStackParamList} from "../App";
 
 type InputScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'InputScreen'
+  "InputScreen"
 >;
 
 type InputScreenProps = {
@@ -51,7 +51,7 @@ const InputScreen : FC<InputScreenProps> = ({navigation}) => {
         />
         <Button
           title="Start workout"
-          onPress={() => navigation.navigate('TimerScreen',{workTime,restTime})}
+          onPress={() => navigation.navigate("TimerScreen",{workTime,restTime})}
         />
       </View>
     );

@@ -1,18 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {useState, FC} from 'react';
-import { Text, View, Button } from 'react-native';
-import { RouteProp } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import {RootStackParamList} from '../App';
+import { StatusBar } from "expo-status-bar";
+import React, {useState, FC, useEffect} from "react";
+import { Text, View, Button } from "react-native";
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import {RootStackParamList} from "../App";
 
 type TimerScreenNavigationProp = StackNavigationProp<
     RootStackParamList,
-    'TimerScreen'
+    "TimerScreen"
 >;
 
 type TimerScreenRouteProp = RouteProp<
     RootStackParamList,
-    'TimerScreen'
+    "TimerScreen"
 >;
 
 type TimerScreenProps = {
@@ -28,22 +28,38 @@ const TimerScreen : FC<TimerScreenProps> = ({route,navigation}) => {
     const [counter,setCounter] = useState<any>(0);
     const [switcher,setSwitcher] = useState<WorkRestSwitch>("work");
   
-    const decrement = () => {
-      let workingTimer = switcher === "work" ? workTimer : restTimer;
-      let changeState = switcher === "work" ? setWorkTimer : setRestTimer;
+    // const decrement = () => {
+    //   let workingTimer = switcher === "work" ? workTimer : restTimer;
+    //   let changeState = switcher === "work" ? setWorkTimer : setRestTimer;
+
+    //   if(workingTimer === 0){
+    //     if(switcher === "work") setSwitcher("rest");
+    //     else setSwitcher("work");
+    //     console.log("Zero");
+    //   }
+    //   console.log(restTimer);
+    //   changeState(prevState => prevState - 1);
+    // }
+
+    useEffect(() => {
+      const workingTimer : number = switcher === "work" ? workTimer : restTimer;
 
       if(workingTimer === 0){
         if(switcher === "work") setSwitcher("rest");
         else setSwitcher("work");
       }
-      console.log(restTimer);
+    },[workTimer,restTimer])
+
+    const decrementWork = () => {
+      const changeState = switcher === "work" ? setWorkTimer : setRestTimer;
+      // console.log(workTimer);
       changeState(prevState => prevState - 1);
     }
 
-    
+    console.log(workTimer);
   
     const startTimer = () => {
-      const counter = setInterval(decrement,1000);
+      const counter = setInterval(decrementWork,1000);
       setCounter(counter);
     }
   

@@ -1,10 +1,10 @@
-import 'react-native-gesture-handler';
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import InputScreen from './screens/inputScreen';
-import TimerScreen from './screens/timerScreen';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import "react-native-gesture-handler";
+import React from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
+import InputScreen from "./screens/inputScreen";
+import TimerScreen from "./screens/timerScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 export type RootStackParamList = {
   InputScreen: undefined;
@@ -36,8 +36,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
